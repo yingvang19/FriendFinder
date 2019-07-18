@@ -1,7 +1,6 @@
 
 var friends = require("../data/friends");
 
-
 // // ===============================================================================
 // // ROUTING
 // // ===============================================================================
@@ -9,7 +8,7 @@ var friends = require("../data/friends");
 module.exports = function(app) {
   // display all friends found in friends.js as JSON object
   app.get("/api/friends", function(req, res) {
-    res.json(friends);
+      res.json(friends);
   });
 
   app.post("/api/friends", function(req, res) {
@@ -20,8 +19,8 @@ module.exports = function(app) {
     console.log("Scores:",req.body.scores);
 
     var userInput = req.body;
-    for(var i = 0; i < user.scores.length; i++) {
-      user.scores[i] = parseInt(user.scores[i]);
+    for(var i = 0; i < userInput.scores.length; i++) {
+      userInput.scores[i] = parseInt(userInput.scores[i]);
     }
 
     
@@ -32,7 +31,7 @@ module.exports = function(app) {
       var totalDifference = 0;
 
       for(var j = 0; j < friends[i].scores.length; j++) {
-        var difference = Math.abs(userInput.scores[j] - friends[i].scores[j]);
+        var diff = Math.abs(userInput.scores[j] - friends[i].scores[j]);
         totalDifference += diff;
 
         console.log("This is the Freind:",i);
@@ -49,8 +48,8 @@ module.exports = function(app) {
       //Check if there is a new minimum difference set and change the best 
       //friend index and set the new minimum for next freind array
       if(totalDifference < minimumDiff) {
-        freindNum = i;
-        minimumDiff = totalDifference;
+          minimumDiff = totalDifference;
+          freindNum = i;
       }
     }
 

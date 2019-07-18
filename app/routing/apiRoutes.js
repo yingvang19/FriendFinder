@@ -24,7 +24,7 @@ module.exports = function(app) {
     }
 
     
-    // variable for index freind and replacing the minimumDiff scores
+    // variable for index friend and replacing the minimumDiff scores
     var friendNum = 0;
     var minimumDiff = 30;
     for(var i = 0; i < friends.length; i++) {
@@ -34,10 +34,10 @@ module.exports = function(app) {
         var diff = Math.abs(userInput.scores[j] - friends[i].scores[j]);
         totalDifference += diff;
 
-        console.log("This is the Freind:",i);
-        console.log("This is the Freind's Score index in the array:",j);
+        console.log("This is the Friend:",i);
+        console.log("This is the Friend's Score index in the array:",j);
         console.log("This is the User's Score:",userInput.scores[j]);
-        console.log("This is the Freind's Score:",friends[i].scores[j]);
+        console.log("This is the Friend's Score:",friends[i].scores[j]);
         console.log("=======Subtract============");
         console.log("This is the diff:",diff,"\n");
         console.log("This is the totalDifference:",totalDifference,"\n");
@@ -56,7 +56,7 @@ module.exports = function(app) {
     //add user to friend array
     friends.push(userInput);
 
-    // best freind matches
+    // best friend matches
     res.json(friends[friendNum]);
   });
 };

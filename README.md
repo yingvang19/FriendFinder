@@ -17,4 +17,4 @@ The application will now be running on local PORT, in this case that is port 808
 
 ## Demo
 FriendFinder is deployed to Heroku to the link below: 
-https://friend-finder-yv.herokuapp.com/
+* https://friend-finder-yv.herokuapp.com/

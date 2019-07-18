@@ -25,7 +25,7 @@ module.exports = function(app) {
 
     
     // variable for index freind and replacing the minimumDiff scores
-    var freindNum = 0;
+    var friendNum = 0;
     var minimumDiff = 30;
     for(var i = 0; i < friends.length; i++) {
       var totalDifference = 0;
@@ -49,7 +49,7 @@ module.exports = function(app) {
       //friend index and set the new minimum for next freind array
       if(totalDifference < minimumDiff) {
           minimumDiff = totalDifference;
-          freindNum = i;
+          friendNum = i;
       }
     }
 
@@ -57,6 +57,6 @@ module.exports = function(app) {
     friends.push(userInput);
 
     // best freind matches
-    res.json(friends[freindNum]);
+    res.json(friends[friendNum]);
   });
 };

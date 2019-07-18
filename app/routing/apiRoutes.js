@@ -19,50 +19,43 @@ module.exports = function(app) {
     console.log("Photo:",req.body.photo);
     console.log("Scores:",req.body.scores);
 
-    // Receive user details (name, photo, scores)
-    var user = req.body;
-
-    // parseInt for scores no floats
+    var userInput = req.body;
     for(var i = 0; i < user.scores.length; i++) {
       user.scores[i] = parseInt(user.scores[i]);
     }
 
     
-    // variable for index freind and replacing the minimumDifference scores
+    // variable for index freind and replacing the minimumDiff scores
     var freindNum = 0;
-    var minimumDifference = 30;
-
-    // in this nested for-loop, start off with a zero difference 
-    //and substract the user and friend scores, one freind at a time
-    //  whatever the difference is, add to the total difference
+    var minimumDiff = 30;
     for(var i = 0; i < friends.length; i++) {
       var totalDifference = 0;
 
       for(var j = 0; j < friends[i].scores.length; j++) {
-        var difference = Math.abs(user.scores[j] - friends[i].scores[j]);
-        totalDifference += difference;
+        var difference = Math.abs(userInput.scores[j] - friends[i].scores[j]);
+        totalDifference += diff;
 
         console.log("This is the Freind:",i);
         console.log("This is the Freind's Score index in the array:",j);
-        console.log("This is the User's Score:",user.scores[j]);
+        console.log("This is the User's Score:",userInput.scores[j]);
         console.log("This is the Freind's Score:",friends[i].scores[j]);
         console.log("=======Subtract============");
-        console.log("This is the difference:",difference,"\n");
+        console.log("This is the diff:",diff,"\n");
         console.log("This is the totalDifference:",totalDifference,"\n");
-        console.log("This is the minimumDifference:",minimumDifference,"\n");
+        console.log("This is the minimumDiff:",minimumDiff,"\n");
 
       }
 
       //Check if there is a new minimum difference set and change the best 
       //friend index and set the new minimum for next freind array
-      if(totalDifference < minimumDifference) {
+      if(totalDifference < minimumDiff) {
         freindNum = i;
-        minimumDifference = totalDifference;
+        minimumDiff = totalDifference;
       }
     }
 
     //add user to friend array
-    friends.push(user);
+    friends.push(userInput);
 
     // best freind matches
     res.json(friends[freindNum]);
